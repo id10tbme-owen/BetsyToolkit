@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kali-blue: #00ccff;
+  --color-kali-dark: #0a0a0c;
+  --color-kali-panel: #121217;
+  --color-kali-border: #1e1e26;
+  --color-kali-text: #e0e0e0;
+  --color-kali-accent: #ff0055;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-kali-dark text-kali-text font-sans overflow-hidden;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-kali-dark;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-kali-blue/30 rounded-full hover:bg-kali-blue/50;
+  }
+}
+
+.cyber-panel {
+  @apply bg-kali-panel border border-kali-border rounded-lg overflow-hidden relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.cyber-panel::before {
+  content: "";
+  @apply absolute top-0 left-0 w-1 h-full bg-kali-blue opacity-50;
+}
+
+.cyber-button {
+  @apply px-4 py-2 bg-kali-border border border-kali-blue/20 rounded text-sm font-medium transition-all hover:bg-kali-blue/10 hover:border-kali-blue active:scale-95;
+}
+
+.cyber-grid {
+  background-image: linear-gradient(rgba(0, 204, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 204, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline {
+  @apply absolute inset-0 pointer-events-none overflow-hidden opacity-5;
+  background: linear-gradient(to bottom, transparent, rgba(0, 204, 255, 0.5), transparent);
+  height: 100px;
+  animation: scanline 8s linear infinite;
+}

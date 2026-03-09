@@ -1,0 +1,5 @@
+{
+  "name": "Betsy Toolkit Control Center",
+  "description": "A modular, GUI-driven command center for device management, network tools, and automation.",
+  "requestFramePermissions": ["clipboard-read", "clipboard-write", "display-capture"]
+}
